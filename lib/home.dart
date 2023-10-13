@@ -3,6 +3,7 @@ import 'package:expensor/data/util.dart';
 import 'package:expensor/login_screen.dart';
 // import 'package:expensor/data/data_list.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -14,6 +15,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String? _deviceLocation;
+
+  @override
+  void initState() {
+    super.initState();
+    _getDeviceLocation();
+  }
+
+  Future<void> _getDeviceLocation() async {
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.best,
+    );
+
+    setState(() {
+      _deviceLocation = "Location: ${position.latitude}, ${position.longitude}";
+    });
+  }
   var history;
   final box = Hive.box<Add_data>('data');
   final List<String> day = [
@@ -151,6 +169,13 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          _deviceLocation ?? 'Fetching location...',
+                          style: TextStyle(
+                            fontSize: 16,
                             color: Colors.white,
                           ),
                         ),

@@ -13,8 +13,8 @@ class Statistics extends StatefulWidget {
 ValueNotifier<int> selectedIndex = ValueNotifier(0);
 
 class _StatisticsState extends State<Statistics> {
-  List<String> timeFrames = ['Day', 'Week', 'Month', 'Year'];
-  List<List<Add_data>> data = [today(), week(), month(), year()];
+  List<String> timeFrames = ['Year', 'Month', 'Week', 'Day'];
+  List<List<Add_data>> data = [year(), month(), week(), today()];
 
   @override
   Widget build(BuildContext context) {
