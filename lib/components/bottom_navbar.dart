@@ -1,5 +1,6 @@
 import 'package:expensor/add_item.dart';
 import 'package:expensor/home.dart';
+import 'package:expensor/profile.dart';
 import 'package:expensor/statistics.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int index_color = 0;
-  List Screen = [Home(), Statistics(), Home(), Statistics()];
+  List Screen = [Home(), Statistics(), Profile()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +23,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
           Navigator.of(context).push(MaterialPageRoute(builder: (context)=>AddItem()));
         },
         child: Icon(Icons.add),
-        backgroundColor: Color(0xff368983),
+        backgroundColor: Color.fromARGB(255, 54, 73, 137),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         child: Padding(
@@ -41,7 +42,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 child: Icon(
                   Icons.home,
                   size: 30,
-                  color: index_color == 0 ? Color(0xff368983) : Colors.grey,
+                  color: index_color == 0 ? Color.fromARGB(255, 54, 73, 137) : Colors.grey,
                 ),
               ),
               GestureDetector(
@@ -51,12 +52,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   });
                 },
                 child: Icon(
-                  Icons.bar_chart_outlined,
+                  Icons.stacked_line_chart_outlined,
                   size: 30,
-                  color: index_color == 1 ? Color(0xff368983) : Colors.grey,
+                  color: index_color == 1 ? Color.fromARGB(255, 54, 73, 137) : Colors.grey,
                 ),
               ),
-              SizedBox(width: 20,),
               GestureDetector(
                 onTap: (){
                   setState(() {
@@ -64,23 +64,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   });
                 },
                 child: Icon(
-                  Icons.account_balance_wallet_outlined,
+                  Icons.account_circle_rounded,
                   size: 30,
-                  color: index_color == 2 ? Color(0xff368983) : Colors.grey,
+                  color: index_color == 2 ? Color.fromARGB(255, 54, 73, 137) : Colors.grey,
                 ),
               ),
-              GestureDetector(
-                onTap: (){
-                  setState(() {
-                    index_color = 3;
-                  });
-                },
-                child: Icon(
-                  Icons.person_outlined,
-                  size: 30,
-                  color: index_color == 3 ? Color(0xff368983) : Colors.grey,
-                ),
-              )
+              SizedBox(width: 25,),
             ],
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:expensor/core/add_data.dart';
 import 'package:expensor/data/util.dart';
+import 'package:expensor/login_screen.dart';
 // import 'package:expensor/data/data_list.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -34,7 +35,7 @@ class _HomeState extends State<Home> {
                 return CustomScrollView(
                   slivers: [
                     SliverToBoxAdapter(
-                      child: SizedBox(height: 340, child: _head()),
+                      child: SizedBox(height: 300, child: _head()),
                     ),
                     SliverToBoxAdapter(
                       child: Padding(
@@ -48,14 +49,6 @@ class _HomeState extends State<Home> {
                                 fontWeight: FontWeight.w600,
                                 fontSize: 19,
                                 color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              'See all',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 15,
-                                color: Colors.grey,
                               ),
                             ),
                           ],
@@ -121,13 +114,9 @@ class _HomeState extends State<Home> {
           children: [
             Container(
               width: double.infinity,
-              height: 240,
+              height: 100,
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 54, 73, 137),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                )
               ),
               child: Stack(
                 children: [
@@ -138,16 +127,6 @@ class _HomeState extends State<Home> {
                       padding: const EdgeInsets.only(top: 30, right: 10),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(7),
-                        child: Container(
-                          height: 40,
-                          width: 40,
-                          color: Color.fromRGBO(54, 134, 255, 0.098),
-                          child: Icon(
-                            Icons.notifications,
-                            size: 30,
-                            color: Colors.white,
-                          ),
-                        ),
                       ),
                     ),
                   ),
@@ -184,11 +163,11 @@ class _HomeState extends State<Home> {
           ],
         ),
         Positioned(
-          top: 140,
-          left: 37,
+          top: 100,
+          left: 6,
           child: Container(
             height: 170,
-            width: 320,
+            width: 380,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -199,126 +178,142 @@ class _HomeState extends State<Home> {
                 ),
               ],
               color: Color.fromARGB(255, 76, 99, 172),
-              borderRadius: BorderRadius.circular(15)
             ),
-            child: Column(
-              children: [
-                SizedBox(height: 10,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Total Balance (LKR)',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Icon(Icons.more_horiz,color: Colors.white,)
-                    ],
-                  ),
-                ),
-                SizedBox(height: 7,),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: Text(
-                        '${total()}',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 25,),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 13,
-                                    backgroundColor: Color.fromARGB(255, 85, 145, 141),
-                                    child: Icon(Icons.arrow_downward, color: Colors.white,size: 19,),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(width: 7,),
-                              Text(
-                                'Income',
-                                style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 13,
-                                    backgroundColor: Color.fromARGB(255, 85, 145, 141),
-                                    child: Icon(Icons.arrow_upward, color: Colors.white,size: 19,),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(width: 7,),
-                              Text(
-                                'Expenses',
-                                style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: 6,),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Column(
+                children: [
+                  SizedBox(height: 10,),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '${income()}',
+                          'Total Balance (LKR)',
                           style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          color: Colors.white,
-                          ),
-                        ),
-                        Text(
-                          '${expenses()}',
-                          style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Colors.white,
                           ),
                         ),
                       ],
                     ),
                   ),
-              ],
+                  SizedBox(height: 7,),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15),
+                        child: Text(
+                          '${total()}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 25,),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 13,
+                                      backgroundColor: Color.fromARGB(255, 85, 145, 141),
+                                      child: Icon(Icons.arrow_downward, color: Colors.white,size: 19,),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: 7,),
+                                Text(
+                                  'Income',
+                                  style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 13,
+                                      backgroundColor: Color.fromARGB(255, 184, 64, 57),
+                                      child: Icon(Icons.arrow_upward, color: Colors.white,size: 19,),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: 7,),
+                                Text(
+                                  'Expenses',
+                                  style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 6,),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            '${income()}',
+                            style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            '${expenses()}',
+                            style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
         )
+        ,Positioned(
+        top: 10,
+        right: 10,
+        child: IconButton(
+          icon: Icon(
+            Icons.logout, // You can change this to the icon you prefer
+            color: Colors.white,
+            size: 30,
+          ),
+          onPressed: () {
+            // Add navigation to the login screen here
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+          },
+        ),
+      ),
       ],
     );
   }

@@ -26,7 +26,7 @@ class _AddItemState extends State<AddItem> {
   ];
   final List<String> _itemei = [
     'Income',
-    "Expand",
+    "Expense",
   ];
   @override
   void initState() {
@@ -97,8 +97,8 @@ class _AddItemState extends State<AddItem> {
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Color(0xff368983),
+          borderRadius: BorderRadius.circular(1),
+          color: Color.fromARGB(255, 54, 73, 137),
         ),
         width: 120,
         height: 50,
@@ -189,7 +189,7 @@ class _AddItemState extends State<AddItem> {
           hint: Padding(
             padding: const EdgeInsets.only(top: 12),
             child: Text(
-              'How',
+              'Type',
               style: TextStyle(color: Colors.grey),
             ),
           ),
@@ -217,7 +217,7 @@ class _AddItemState extends State<AddItem> {
               borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+              borderSide: BorderSide(width: 2, color: Color.fromARGB(255, 54, 73, 137))),
         ),
       ),
     );
@@ -231,14 +231,14 @@ class _AddItemState extends State<AddItem> {
         controller: expalin_C,
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-          labelText: 'explain',
+          labelText: 'description',
           labelStyle: TextStyle(fontSize: 17, color: Colors.grey.shade500),
           enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide(width: 2, color: Color(0xffC5C5C5))),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide(width: 2, color: Color(0xff368983))),
+              borderSide: BorderSide(width: 2, color: Color.fromARGB(255, 54, 73, 137))),
         ),
       ),
     );
@@ -319,11 +319,7 @@ class _AddItemState extends State<AddItem> {
           width: double.infinity,
           height: 240,
           decoration: BoxDecoration(
-            color: Color(0xff368983),
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
-            ),
+            color: Color.fromARGB(255, 54, 73, 137),
           ),
           child: Column(
             children: [
@@ -341,16 +337,12 @@ class _AddItemState extends State<AddItem> {
                       child: Icon(Icons.arrow_back, color: Colors.white),
                     ),
                     Text(
-                      'Adding',
+                      'Add Items',
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                           color: Colors.white),
                     ),
-                    Icon(
-                      Icons.attach_file_outlined,
-                      color: Colors.white,
-                    )
                   ],
                 ),
               )
